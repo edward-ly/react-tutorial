@@ -52,6 +52,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      moveListIsReversed: false,
     };
   }
 
@@ -104,6 +105,9 @@ class Game extends React.Component {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
+    // eslint-disable-next-line
+    let reverseToggle = <a href="#" onClick={() => this.setState({ moveListIsReversed: !this.state.moveListIsReversed, })}>Reverse List</a>;
+
     return (
       <div className="game">
         <div className="game-board">
@@ -114,7 +118,8 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <div>{reverseToggle}</div>
+          <ol>{this.state.moveListIsReversed ? moves.reverse() : moves}</ol>
         </div>
       </div>
     );
