@@ -2,11 +2,12 @@ import React from 'react';
 import Square from './Square.js';
 
 class Board extends React.Component {
-  renderSquare(i) {
+  renderSquare(i, j) {
+    let id = 3 * i + j - 4; // this.props.boardWidth * (i - 1) + (j - 1);
     return (
       <Square
-        value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
+        value={this.props.squares[id]}
+        onClick={() => this.props.onClick(id)}
       />
     );
   }
@@ -15,19 +16,19 @@ class Board extends React.Component {
     return (
       <div>
         <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          {this.renderSquare(1, 1)}
+          {this.renderSquare(1, 2)}
+          {this.renderSquare(1, 3)}
         </div>
         <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          {this.renderSquare(2, 1)}
+          {this.renderSquare(2, 2)}
+          {this.renderSquare(2, 3)}
         </div>
         <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          {this.renderSquare(3, 1)}
+          {this.renderSquare(3, 2)}
+          {this.renderSquare(3, 3)}
         </div>
       </div>
     );
