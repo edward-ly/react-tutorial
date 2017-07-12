@@ -3,7 +3,7 @@ import Square from './Square.js';
 
 class Board extends React.Component {
   renderSquare(i, j) {
-    let id = 3 * i + j - 4; // this.props.boardWidth * (i - 1) + (j - 1);
+    let id = this.props.width * (i - 1) + (j - 1);
     return (
       <Square
         key={id}
@@ -16,10 +16,10 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        {Array(3).fill(null).map((x, i) => {
+        {Array(this.props.width).fill(null).map((x, i) => {
           return (
             <div key={i} className="board-row">
-              {Array(3).fill(null).map((y, j) => {
+              {Array(this.props.width).fill(null).map((y, j) => {
                 return this.renderSquare(i + 1, j + 1);
               })}
             </div>

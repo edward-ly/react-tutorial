@@ -5,6 +5,7 @@ class Game extends React.Component {
   constructor() {
     super();
     this.state = {
+      boardWidth: 3,
       history: [{
         squares: Array(9).fill(null),
       }],
@@ -70,6 +71,7 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board
+            width={this.state.boardWidth}
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
           />
